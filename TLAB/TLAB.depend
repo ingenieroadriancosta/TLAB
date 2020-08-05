@@ -1,0 +1,241 @@
+# depslib dependency file v1.0
+1549608261 source:e:\aiif\segall\conocimiento\universidad\tesis\p_nuevo\aplicaciones\tlab\dsp_lab\tlab\tlab\main.cpp
+	"TLAB_API\TLAB.cpp"
+
+1549954873 e:\aiif\segall\conocimiento\universidad\tesis\p_nuevo\aplicaciones\tlab\dsp_lab\tlab\tlab\tlab_api\tlab.cpp
+	<windows.h>
+	<math.h>
+	<shlwapi.h>
+	<commctrl.h>
+	<stdio.h>
+	"OurCrashHandler.cpp"
+	"IMAGE_API\IMLIB.h"
+	"SAVE_AS_JPG.cpp"
+	"IMAGE_API\IMLIB.h"
+	"DEFINE.h"
+	"WINAPI_FUNCS.cpp"
+	"PLOT_CLASS\INCLUDE_PLOT_CLASS.h"
+	"CONTROLES\ImageButton.cpp"
+	"DSP_API\DSP_LOAD.cpp"
+	"REDIMP_F.cpp"
+	"StructThreads.cpp"
+	"WProcedure.cpp"
+	"Create.cpp"
+	"CmdProcs.cpp"
+	"Procs1D.cpp"
+	"Procs2D.cpp"
+	"RUN_PROCS.cpp"
+	"SaveRestFile.cpp"
+	"SaveSesion.cpp"
+	"SaveOpenSesion.cpp"
+	"SaveCode1D.cpp"
+	"CopyCode1D.cpp"
+	"SaveCode2D.cpp"
+	"CopyCode2D.cpp"
+	"DLGS.cpp"
+	"DLG_INIT_APP.cpp"
+	"DLGS_PLAY.cpp"
+	"SHOW_IMAGE.cpp"
+	"SHOW_PLOT.cpp"
+	"SAVE_GRAPH_FUNC.cpp"
+	"WRITE_ERROR_REPORT.cpp"
+	"CALL_FREE_MAT.cpp"
+	"PRUEBAS.cpp"
+
+1539852553 e:\aiif\segall\conocimiento\universidad\tesis\p_nuevo\aplicaciones\tlab\dsp_lab\tlab\tlab\tlab_api\ourcrashhandler.cpp
+
+1407568646 e:\aiif\segall\conocimiento\universidad\tesis\p_nuevo\aplicaciones\tlab\dsp_lab\tlab\tlab\tlab_api\image_api\imlib.h
+
+1540445248 e:\aiif\segall\conocimiento\universidad\tesis\p_nuevo\aplicaciones\tlab\dsp_lab\tlab\tlab\tlab_api\save_as_jpg.cpp
+
+1549950929 e:\aiif\segall\conocimiento\universidad\tesis\p_nuevo\aplicaciones\tlab\dsp_lab\tlab\tlab\tlab_api\define.h
+
+1540467584 e:\aiif\segall\conocimiento\universidad\tesis\p_nuevo\aplicaciones\tlab\dsp_lab\tlab\tlab\tlab_api\winapi_funcs.cpp
+
+1533559659 e:\aiif\segall\conocimiento\universidad\tesis\p_nuevo\aplicaciones\tlab\dsp_lab\tlab\tlab\tlab_api\plot_class\include_plot_class.h
+	<math.h>
+	"LINE_COLORS.cpp"
+	"PLOT_CLASS.cpp"
+	"WProcCon.cpp"
+	"GRID_PROC.cpp"
+	"PLOTSHORT.cpp"
+	"PLOT_U_SHORT.cpp"
+	"PLOTSHORT3.cpp"
+	"PLOTDOUBLE.cpp"
+
+1539930029 e:\aiif\segall\conocimiento\universidad\tesis\p_nuevo\aplicaciones\tlab\dsp_lab\tlab\tlab\tlab_api\plot_class\line_colors.cpp
+
+1539237008 e:\aiif\segall\conocimiento\universidad\tesis\p_nuevo\aplicaciones\tlab\dsp_lab\tlab\tlab\tlab_api\plot_class\plot_class.cpp
+
+1538889349 e:\aiif\segall\conocimiento\universidad\tesis\p_nuevo\aplicaciones\tlab\dsp_lab\tlab\tlab\tlab_api\plot_class\wproccon.cpp
+
+1538362571 e:\aiif\segall\conocimiento\universidad\tesis\p_nuevo\aplicaciones\tlab\dsp_lab\tlab\tlab\tlab_api\plot_class\grid_proc.cpp
+
+1533696953 e:\aiif\segall\conocimiento\universidad\tesis\p_nuevo\aplicaciones\tlab\dsp_lab\tlab\tlab\tlab_api\plot_class\plotshort.cpp
+
+1537430862 e:\aiif\segall\conocimiento\universidad\tesis\p_nuevo\aplicaciones\tlab\dsp_lab\tlab\tlab\tlab_api\plot_class\plot_u_short.cpp
+
+1534751967 e:\aiif\segall\conocimiento\universidad\tesis\p_nuevo\aplicaciones\tlab\dsp_lab\tlab\tlab\tlab_api\plot_class\plotshort3.cpp
+
+1539237490 e:\aiif\segall\conocimiento\universidad\tesis\p_nuevo\aplicaciones\tlab\dsp_lab\tlab\tlab\tlab_api\plot_class\plotdouble.cpp
+
+1538116689 e:\aiif\segall\conocimiento\universidad\tesis\p_nuevo\aplicaciones\tlab\dsp_lab\tlab\tlab\tlab_api\controles\imagebutton.cpp
+
+1548657276 e:\aiif\segall\conocimiento\universidad\tesis\p_nuevo\aplicaciones\tlab\dsp_lab\tlab\tlab\tlab_api\dsp_api\dsp_load.cpp
+	<windows.h>
+	<math.h>
+	<stdio.h>
+	<direct.h>
+	<sys/stat.h>
+	<time.h>
+	"fftw3.h"
+	"matio.h"
+	"FDESIGN\TYPES_FDESIGN.cpp"
+	"DIM1.cpp"
+	"DIM2.cpp"
+
+1510541844 e:\aiif\segall\conocimiento\universidad\tesis\p_nuevo\aplicaciones\tlab\dsp_lab\tlab\tlab\tlab_api\dsp_api\fftw3.h
+	<stdio.h>
+	<stddef.h>
+
+1532411193 e:\aiif\segall\conocimiento\universidad\tesis\p_nuevo\aplicaciones\tlab\dsp_lab\tlab\tlab\tlab_api\dsp_api\matio.h
+	<stdlib.h>
+	<stdio.h>
+	<stdarg.h>
+
+1539338647 e:\aiif\segall\conocimiento\universidad\tesis\p_nuevo\aplicaciones\tlab\dsp_lab\tlab\tlab\tlab_api\dsp_api\fdesign\types_fdesign.cpp
+	"FILTERS_FUNCS.cpp"
+
+1533282725 e:\aiif\segall\conocimiento\universidad\tesis\p_nuevo\aplicaciones\tlab\dsp_lab\tlab\tlab\tlab_api\dsp_api\fdesign\filters_funcs.cpp
+	"conv.cpp"
+	"butter.cpp"
+
+1539845096 e:\aiif\segall\conocimiento\universidad\tesis\p_nuevo\aplicaciones\tlab\dsp_lab\tlab\tlab\tlab_api\dsp_api\fdesign\conv.cpp
+
+1533282789 e:\aiif\segall\conocimiento\universidad\tesis\p_nuevo\aplicaciones\tlab\dsp_lab\tlab\tlab\tlab_api\dsp_api\fdesign\butter.cpp
+	<math.h>
+	<ctype.h>
+
+1567757599 e:\aiif\segall\conocimiento\universidad\tesis\p_nuevo\aplicaciones\tlab\dsp_lab\tlab\tlab\tlab_api\dsp_api\dim1.cpp
+
+1550729978 e:\aiif\segall\conocimiento\universidad\tesis\p_nuevo\aplicaciones\tlab\dsp_lab\tlab\tlab\tlab_api\dsp_api\dim2.cpp
+	"Kernels_3x3.cpp"
+	"CONVS_2D.cpp"
+	"ARITH_PROCS.cpp"
+	"BWLABEL.cpp"
+	"BWLABEL_NEW.cpp"
+	"BWLABEL_NEW2.cpp"
+	"BWLABEL_NEW3.cpp"
+	"BWLABEL_NEW4.cpp"
+	"IMFILL.cpp"
+	"AVERAGEPROC.cpp"
+	"ERODEPROC.cpp"
+	"DILATEPROC.cpp"
+	"OPENPROC.cpp"
+	"CLOSEPROC.cpp"
+	"IMFILLPROC.cpp"
+
+1538705938 e:\aiif\segall\conocimiento\universidad\tesis\p_nuevo\aplicaciones\tlab\dsp_lab\tlab\tlab\tlab_api\dsp_api\kernels_3x3.cpp
+
+1545114252 e:\aiif\segall\conocimiento\universidad\tesis\p_nuevo\aplicaciones\tlab\dsp_lab\tlab\tlab\tlab_api\dsp_api\convs_2d.cpp
+	"SETKIRSH.cpp"
+	"SOBEL_PROC.cpp"
+	"CONV3Kernel.cpp"
+	"CONV3x3_TRY.cpp"
+
+1538880660 e:\aiif\segall\conocimiento\universidad\tesis\p_nuevo\aplicaciones\tlab\dsp_lab\tlab\tlab\tlab_api\dsp_api\setkirsh.cpp
+
+1548041229 e:\aiif\segall\conocimiento\universidad\tesis\p_nuevo\aplicaciones\tlab\dsp_lab\tlab\tlab\tlab_api\dsp_api\arith_procs.cpp
+
+1542775795 e:\aiif\segall\conocimiento\universidad\tesis\p_nuevo\aplicaciones\tlab\dsp_lab\tlab\tlab\tlab_api\structthreads.cpp
+
+1542866325 e:\aiif\segall\conocimiento\universidad\tesis\p_nuevo\aplicaciones\tlab\dsp_lab\tlab\tlab\tlab_api\wprocedure.cpp
+
+1549954927 e:\aiif\segall\conocimiento\universidad\tesis\p_nuevo\aplicaciones\tlab\dsp_lab\tlab\tlab\tlab_api\create.cpp
+
+1549954211 e:\aiif\segall\conocimiento\universidad\tesis\p_nuevo\aplicaciones\tlab\dsp_lab\tlab\tlab\tlab_api\cmdprocs.cpp
+
+1568943337 e:\aiif\segall\conocimiento\universidad\tesis\p_nuevo\aplicaciones\tlab\dsp_lab\tlab\tlab\tlab_api\procs1d.cpp
+
+1549690988 e:\aiif\segall\conocimiento\universidad\tesis\p_nuevo\aplicaciones\tlab\dsp_lab\tlab\tlab\tlab_api\procs2d.cpp
+
+1539580162 e:\aiif\segall\conocimiento\universidad\tesis\p_nuevo\aplicaciones\tlab\dsp_lab\tlab\tlab\tlab_api\run_procs.cpp
+
+1549954671 e:\aiif\segall\conocimiento\universidad\tesis\p_nuevo\aplicaciones\tlab\dsp_lab\tlab\tlab\tlab_api\saverestfile.cpp
+
+1538032180 e:\aiif\segall\conocimiento\universidad\tesis\p_nuevo\aplicaciones\tlab\dsp_lab\tlab\tlab\tlab_api\savesesion.cpp
+
+1539590470 e:\aiif\segall\conocimiento\universidad\tesis\p_nuevo\aplicaciones\tlab\dsp_lab\tlab\tlab\tlab_api\saveopensesion.cpp
+
+1567747593 e:\aiif\segall\conocimiento\universidad\tesis\p_nuevo\aplicaciones\tlab\dsp_lab\tlab\tlab\tlab_api\savecode1d.cpp
+
+1540270005 e:\aiif\segall\conocimiento\universidad\tesis\p_nuevo\aplicaciones\tlab\dsp_lab\tlab\tlab\tlab_api\savecode2d.cpp
+
+1567747566 e:\aiif\segall\conocimiento\universidad\tesis\p_nuevo\aplicaciones\tlab\dsp_lab\tlab\tlab\tlab_api\dlgs.cpp
+	"DLG_2_D.cpp"
+
+1550731850 e:\aiif\segall\conocimiento\universidad\tesis\p_nuevo\aplicaciones\tlab\dsp_lab\tlab\tlab\tlab_api\dlg_2_d.cpp
+
+1538284411 e:\aiif\segall\conocimiento\universidad\tesis\p_nuevo\aplicaciones\tlab\dsp_lab\tlab\tlab\tlab_api\dlgs_play.cpp
+
+1547443858 e:\aiif\segall\conocimiento\universidad\tesis\p_nuevo\aplicaciones\tlab\dsp_lab\tlab\tlab\tlab_api\show_image.cpp
+
+1538719640 e:\aiif\segall\conocimiento\universidad\tesis\p_nuevo\aplicaciones\tlab\dsp_lab\tlab\tlab\tlab_api\show_plot.cpp
+
+1539080370 e:\aiif\segall\conocimiento\universidad\tesis\p_nuevo\aplicaciones\tlab\dsp_lab\tlab\tlab\tlab_api\save_graph_func.cpp
+
+1539067720 e:\aiif\segall\conocimiento\universidad\tesis\p_nuevo\aplicaciones\tlab\dsp_lab\tlab\tlab\tlab_api\write_error_report.cpp
+
+1538109500 e:\aiif\segall\conocimiento\universidad\tesis\p_nuevo\aplicaciones\tlab\dsp_lab\tlab\tlab\tlab_api\pruebas.cpp
+
+1549599213 source:e:\aiif\segall\conocimiento\universidad\tesis\p_nuevo\aplicaciones\tlab\dsp_lab\tlab\tlab\tlab_api\tlab.rc
+	<windows.h>
+	<commctrl.h>
+	"DEFINE.h"
+	"menu.rc"
+	"DLGS.rc"
+
+1549951151 e:\aiif\segall\conocimiento\universidad\tesis\p_nuevo\aplicaciones\tlab\dsp_lab\tlab\tlab\tlab_api\menu.rc
+
+1550731666 e:\aiif\segall\conocimiento\universidad\tesis\p_nuevo\aplicaciones\tlab\dsp_lab\tlab\tlab\tlab_api\dlgs.rc
+
+1539948964 e:\aiif\segall\conocimiento\universidad\tesis\p_nuevo\aplicaciones\tlab\dsp_lab\tlab\tlab\tlab_api\dsp_api\bwlabel.cpp
+
+1543632015 e:\aiif\segall\conocimiento\universidad\tesis\p_nuevo\aplicaciones\tlab\dsp_lab\tlab\tlab\tlab_api\dsp_api\bwlabel_new.cpp
+
+1540372623 e:\aiif\segall\conocimiento\universidad\tesis\p_nuevo\aplicaciones\tlab\dsp_lab\tlab\tlab\tlab_api\dsp_api\bwlabel_new2.cpp
+
+1540358081 e:\aiif\segall\conocimiento\universidad\tesis\p_nuevo\aplicaciones\tlab\dsp_lab\tlab\tlab\tlab_api\dsp_api\bwlabel_new3.cpp
+
+1554440659 e:\aiif\segall\conocimiento\universidad\tesis\p_nuevo\aplicaciones\tlab\dsp_lab\tlab\tlab\tlab_api\copycode2d.cpp
+
+1567747524 e:\aiif\segall\conocimiento\universidad\tesis\p_nuevo\aplicaciones\tlab\dsp_lab\tlab\tlab\tlab_api\copycode1d.cpp
+
+1540865284 e:\aiif\segall\conocimiento\universidad\tesis\p_nuevo\aplicaciones\tlab\dsp_lab\tlab\tlab\tlab_api\dsp_api\bwlabel_new4.cpp
+
+1542162349 e:\aiif\segall\conocimiento\universidad\tesis\p_nuevo\aplicaciones\tlab\dsp_lab\tlab\tlab\tlab_api\call_free_mat.cpp
+
+1550732287 e:\aiif\segall\conocimiento\universidad\tesis\p_nuevo\aplicaciones\tlab\dsp_lab\tlab\tlab\tlab_api\dsp_api\conv3x3_try.cpp
+
+1547711351 e:\aiif\segall\conocimiento\universidad\tesis\p_nuevo\aplicaciones\tlab\dsp_lab\tlab\tlab\tlab_api\dsp_api\erodeproc.cpp
+
+1542958920 e:\aiif\segall\conocimiento\universidad\tesis\p_nuevo\aplicaciones\tlab\dsp_lab\tlab\tlab\tlab_api\dlg_init_app.cpp
+
+1547712128 e:\aiif\segall\conocimiento\universidad\tesis\p_nuevo\aplicaciones\tlab\dsp_lab\tlab\tlab\tlab_api\dsp_api\dilateproc.cpp
+
+1547712133 e:\aiif\segall\conocimiento\universidad\tesis\p_nuevo\aplicaciones\tlab\dsp_lab\tlab\tlab\tlab_api\dsp_api\openproc.cpp
+
+1547712144 e:\aiif\segall\conocimiento\universidad\tesis\p_nuevo\aplicaciones\tlab\dsp_lab\tlab\tlab\tlab_api\dsp_api\closeproc.cpp
+
+1544947388 e:\aiif\segall\conocimiento\universidad\tesis\p_nuevo\aplicaciones\tlab\dsp_lab\tlab\tlab\tlab_api\dsp_api\sobel_proc.cpp
+
+1545117236 e:\aiif\segall\conocimiento\universidad\tesis\p_nuevo\aplicaciones\tlab\dsp_lab\tlab\tlab\tlab_api\dsp_api\conv3kernel.cpp
+
+1547442741 e:\aiif\segall\conocimiento\universidad\tesis\p_nuevo\aplicaciones\tlab\dsp_lab\tlab\tlab\tlab_api\redimp_f.cpp
+
+1547713595 e:\aiif\segall\conocimiento\universidad\tesis\p_nuevo\aplicaciones\tlab\dsp_lab\tlab\tlab\tlab_api\dsp_api\averageproc.cpp
+
+1549692726 e:\aiif\segall\conocimiento\universidad\tesis\p_nuevo\aplicaciones\tlab\dsp_lab\tlab\tlab\tlab_api\dsp_api\imfill.cpp
+
+1549691113 e:\aiif\segall\conocimiento\universidad\tesis\p_nuevo\aplicaciones\tlab\dsp_lab\tlab\tlab\tlab_api\dsp_api\imfillproc.cpp
+

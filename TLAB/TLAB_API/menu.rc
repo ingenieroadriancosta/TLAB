@@ -1,0 +1,118 @@
+
+MAIN_MENU MENUEX
+BEGIN
+POPUP "&Archivo"
+    BEGIN
+        MENUITEM "&Abrir sesión\a Ctrl + A", CMD_OPEN_SESION
+        MENUITEM SEPARATOR
+        MENUITEM "&Guardar sesión\a Ctrl + S", CMD_SAVE_SESION
+        MENUITEM SEPARATOR
+        MENUITEM "&Guardar procesamiento (CÓDIGO MATLAB)\a Ctrl + G", CMD_SAVE_CODE
+        MENUITEM SEPARATOR
+        MENUITEM "&Guardar Gráfica/Imagen\a Ctrl + Alt + G", CMD_SAVE_GRAPH
+        MENUITEM SEPARATOR
+        MENUITEM "&Salir\aCtrl + Q", CMD_QUIT
+    END
+
+POPUP "&Opciones"
+BEGIN
+    MENUITEM "&Ejecutar\a Ctrl + R ó Ctrl+ENTER", CMD_RUN
+    MENUITEM SEPARATOR
+    MENUITEM "&Ejecutar todo nuevamente\a Alt+ENTER", CMD_RE_RUN
+    MENUITEM SEPARATOR
+    MENUITEM "&Borrar ultimo procedimiento\a Ctrl + E", CMD_DeleteProc
+    MENUITEM SEPARATOR
+    MENUITEM "&Copiar procesamiento al portapapeles\a Ctrl + C", CMD_COPY_PROC_2_CLIPBOARD
+    MENUITEM SEPARATOR
+    MENUITEM "&Graficar módulos\a Ctrl + Alt + P", CMD_SETPLOTALL
+    MENUITEM SEPARATOR
+    MENUITEM "&Siempre Visible\a Ctrl + Alt + T", CMD_ON_ALW_ONTOP
+END
+
+
+POPUP "&Herramientas"
+BEGIN
+    MENUITEM "&Abrir DSP TAD\a Ctrl + D", CMD_OPEN_DSP_TAD
+    MENUITEM SEPARATOR
+    MENUITEM "&Abrir carpeta TLAB\a Ctrl + L", CMD_OPEN_FOLDER_DSP
+    MENUITEM SEPARATOR
+    MENUITEM "&Abrir FREE MAT\a", CMD_CALL_FREE_MAT
+END
+
+
+
+POPUP "&Ayuda"
+    BEGIN
+    MENUITEM "&Tiempo del último proceso\a Ctrl + T", CMD_TIME_LAST_PROC
+    MENUITEM SEPARATOR
+    MENUITEM "&Información del módulo\a Ctrl + I", CMD_GET_MOD_INFO
+    MENUITEM SEPARATOR
+    MENUITEM "&Ayuda\a Ctrl + H", WITH_OUT_PROC
+    MENUITEM SEPARATOR
+    MENUITEM "&Acerca de TLAB\a", CMD_ABOUT_TLAB
+    END
+END
+
+
+
+/// /////////////////////////////////////////////////////////////////////////////
+MAIN_ACCEL ACCELERATORS
+BEGIN
+    "^Q"     ,   CMD_QUIT
+    "x"      ,   CMD_QUIT, ALT
+    "X"      ,   CMD_QUIT, ALT
+    ///
+    "^T"     ,   CMD_ON_ALW_ONTOP, ALT, VIRTKEY
+    ///
+    "^D"     ,   CMD_OPEN_DSP_TAD
+    ///
+    "^R"     ,   CMD_RUN
+    VK_RETURN,  CMD_RE_RUN, ALT, VIRTKEY
+    VK_RETURN,  CMD_RUN, CONTROL, VIRTKEY
+    ///
+    ///
+    "^P"     ,   CMD_SETPLOTALL, ALT, VIRTKEY
+    ///
+    ///
+    ///
+    "^I"     ,   CMD_GET_MOD_INFO
+    ///
+    ///
+    ///
+    "^T"     ,   CMD_TIME_LAST_PROC
+    ///
+    ///
+    "^C"     ,   CMD_COPY_PROC_2_CLIPBOARD
+    ///
+    ///
+    ///
+    ///
+    VK_UP    ,   CMD_UPCTRL, ALT, VIRTKEY
+    VK_DOWN  ,   CMD_DOWNCTRL, ALT, VIRTKEY
+    ///
+    ///
+    ///
+    "^G"     ,   CMD_SAVE_GRAPH, ALT, VIRTKEY
+    ///
+    "^P"     ,   CMD_PRUEBAS, ALT, VIRTKEY
+    ///
+    ///
+    "^P"     ,   CMD_PIC_2D
+    ///
+    "^E"     ,   CMD_DeleteProc
+    ///
+    //*
+    "^B"     ,   WITH_OUT_PROC
+    ///
+    "^F"     ,   WITH_OUT_PROC
+    ///
+    "^A"     ,   CMD_OPEN_SESION
+    "^S"     ,   CMD_SAVE_SESION
+    "^G"     ,   CMD_SAVE_CODE
+    ///
+    "^L"     ,   CMD_OPEN_FOLDER_DSP
+    ///
+    //*/
+END
+/// /////////////////////////////////////////////////////////////////////////////
+

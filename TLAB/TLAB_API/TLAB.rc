@@ -1,0 +1,219 @@
+#include <windows.h>
+#include <commctrl.h>
+#include "DEFINE.h"
+#include "menu.rc"
+#include "DLGS.rc"
+DSP_TAD_EXE         FILE_RES              "E:\\AIIF\\SegAll\\CONOCIMIENTO\\UNIVERSIDAD\\TESIS\\P_NUEVO\\APLICACIONES\\TLAB\\DSP_LAB\\DSP_TAB\\bin\\Release\\DSP_TAD.exe"
+DSP_FREEMAT         FILE_RES              "E:\\AIIF\\SegAll\\CONOCIMIENTO\\UNIVERSIDAD\\TESIS\\P_NUEVO\\APLICACIONES\\FreeMat.zip"
+DSP_MSVCR100        FILE_RES              "E:\\AIIF\\SegAll\\CONOCIMIENTO\\UNIVERSIDAD\\TESIS\\P_NUEVO\\APLICACIONES\\TLAB\\DSP_LAB\\TLAB\\TLAB\\msvcr100.dll"
+TLAB_ICON           ICON                  "PICS\\TLAB.ico"
+DSP_FREEMAT_ICON    FILE_RES              "PICS\\FreeMatIcon.png"
+DSP_TADICON_ICON    FILE_RES              "PICS\\DSPTAD_ICON.png"
+DSP_TLABFOLDER_ICON FILE_RES              "PICS\\TLAB_FOLDER_ICON.png"
+///
+RUN_PNG             FILE_RES              "PICS\\run.png"
+INIT_PNG_BIG        FILE_RES              "PICS\\init_im_big.png"
+INIT_PNG            FILE_RES              "PICS\\init_im.png"
+LENA_JPG            FILE_RES              "PICS\\lena480.jpg"
+WAV_LOAD            FILE_RES              "PICS\\wav_load.png"
+MAT_LOAD            FILE_RES              "PICS\\mat_load.png"
+SIN_MAKE            FILE_RES              "PICS\\sign.png"
+CANCEL_B            FILE_RES              "PICS\\cancel.png"
+NO_PIC              FILE_RES              "PICS\\no_image_pic.jpg"
+///
+///
+///
+/// NO_PROC             FILE_RES              "PICS\\noproc.png"
+///
+/// 1D
+SIG_IN              FILE_RES              "PICS\\sig_in.png"
+PLOT_PNG            FILE_RES              "PICS\\plot.png"
+FILTER_PIC          FILE_RES              "PICS\\filt_pic.jpg"
+WINDOWING_PIC       FILE_RES              "PICS\\wind_pic.jpg"
+FFT_PIC             FILE_RES              "PICS\\fft_pic.jpg"
+SPEC_PIC            FILE_RES              "PICS\\spec_pic.jpg"
+WIGNER_PIC          FILE_RES              "PICS\\wigv_pic.jpg"
+CHOI_WILL_PIC       FILE_RES              "PICS\\choiw.jpg"
+PLAY_PIC            FILE_RES              "PICS\\play.jpg"
+///
+NO_PROC_PIC         FILE_RES              "PICS\\vacio.png"
+///
+///
+///
+/// 2D
+IMAGEFILE           FILE_RES              "PICS\\image_file.jpg"
+IMSHOW              FILE_RES              "PICS\\imshow.png"
+RGB2GRAY_PIC        FILE_RES              "PICS\\rgb2gray_pic.jpg"
+BINAR_PIC           FILE_RES              "PICS\\binary_pic.jpg"
+CONV_PIC            FILE_RES              "PICS\\conv3x3_pic.jpg"
+HIST_PIC            FILE_RES              "PICS\\hist_pic.png"
+REDIM_PIC           FILE_RES              "PICS\\redim_pic.jpg"
+ARIT_PIC            FILE_RES              "PICS\\aritm_pic.jpg"
+BWL_PIC             FILE_RES              "PICS\\bwlabelpic.jpg"
+///
+///
+///
+///
+NOPROC2D_PIC        FILE_RES              "PICS\\vacio.png"
+ERODE_PIC           FILE_RES              "PICS\\erode_pic.jpg"
+DILATE_PIC          FILE_RES              "PICS\\dilate_pic.jpg"
+OPEN_PIC            FILE_RES              "PICS\\open_pic.jpg"
+CLOSE_PIC           FILE_RES              "PICS\\close_pic.jpg"
+///
+IMFILL_PIC          FILE_RES              "PICS\\imfill_pic.jpg"
+///
+///
+///
+FRONTIER_PIC        FILE_RES              "PICS\\frontier_pic.jpg"
+FRONTIERDIL_PIC     FILE_RES              "PICS\\frontierdil_pic.jpg"
+//
+TH_W_PIC            FILE_RES              "PICS\\th_w_pic.jpg"
+TH_B_PIC            FILE_RES              "PICS\\th_b_pic.jpg"
+///
+///
+///
+///
+KIRSH_M             FILE_RES              "PICS\\kirschedge.m"
+WIGNER_M            FILE_RES              "E:\\AIIF\\SegAll\\CONOCIMIENTO\\UNIVERSIDAD\\TESIS\\P_NUEVO\\APLICACIONES\\TLAB\\DSP_LAB\\DSP_TAB\\DSP_TAB_ALL\\MATLAB\\wigner.m"
+CHOI_WILLIAM_M      FILE_RES              "E:\\AIIF\\SegAll\\CONOCIMIENTO\\UNIVERSIDAD\\TESIS\\P_NUEVO\\APLICACIONES\\TLAB\\DSP_LAB\\DSP_TAB\\DSP_TAB_ALL\\MATLAB\\choi_william.m"
+///
+///
+///
+///
+1       24              "TLAB.exe.Manifest"
+
+
+
+///
+///
+///
+///
+
+///
+Dial_MSGBOX DIALOGEX
+    60, 0, 300, 120
+    EXSTYLE WS_EX_TOOLWINDOW
+    ///STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | DS_CENTER
+    STYLE WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_DLGFRAME
+    CAPTION ""
+    FONT 12, "Times"
+    BEGIN
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+    CONTROL "",  100, "static",  (SS_LEFT) | WS_CHILD | WS_VISIBLE,  1, 1, 34, 34
+    CONTROL "",  IDYES, "button", BS_CENTER | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 35, 1, 34, 34
+END
+///
+///
+///
+///
+///
+///
+///
+///
+///
+///
+///
+///
+///
+
+STRINGTABLE
+BEGIN
+ID_TEXT_ABOUT,
+" TLAB Versión 1.1\n\n"
+" Creado Por:\n"
+//"\n"
+" ADRIAN JOSE COSTA OSPINO.\n"
+" email: adrianjocos@hotmail.com\n"
+//" \n"
+" JOSÉ DAVID MEDINA MARTÍNEZ.\n"
+" email: \n"
+" \n"
+" Dirigido y supervisado por:\n"
+" Ing. FRANKLIN ROSADO ARMENTA\n"
+" \n"
+" \n"
+" UNIVERSIDAD POPULAR DEL CESAR\n"
+" FACULTAD DE INGENIERIAS Y TECNOLOGICAS\n"
+" PROGRAMA DE INGENIERÍA ELECTRÓNICA\n"
+" VALLEDUPAR(2019)\n"
+" -----------------------------------"
+END
+///
+
+#define WPGRSB_INIT         200
+#define HPGRSB_INIT         154
+#define HTEXT_INIT           16
+Dial_LOAD_INIT DIALOGEX
+    60, 0, WPGRSB_INIT, HPGRSB_INIT
+    EXSTYLE WS_EX_TOOLWINDOW | WS_EX_TOPMOST
+    STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | DS_CENTER
+    CAPTION ""
+    FONT 10, "Times"
+    BEGIN
+    ///
+    ///
+    ///
+    ///
+    CONTROL "", 20, "STATIC",  WS_CHILD | WS_VISIBLE,
+                        0, 0, WPGRSB_INIT, (HPGRSB_INIT - HTEXT_INIT - 4)
+    ///
+    ///
+    ///
+    CONTROL "", 100, PROGRESS_CLASS,  WS_CHILD | WS_BORDER | WS_VISIBLE,
+                    0, (HPGRSB_INIT - HTEXT_INIT-2), WPGRSB_INIT, HTEXT_INIT
+    ///
+    ///
+    ///
+    ///
+    CONTROL "", 123, "STATIC",  SS_REALSIZEIMAGE | SS_ICON | WS_CHILD |
+                        ///WS_BORDER |
+                        WS_VISIBLE
+                        ,
+                        WPGRSB_INIT- 21, 1, 50, 50
+    ///
+    ///
+    ///
+END
+///
+///
+///
+///
+///
+#define L_HTEXT_INIT           HTEXT_INIT
+Dial_ABOUT_TLAB DIALOGEX
+    60, 0, WPGRSB_INIT, (HPGRSB_INIT-L_HTEXT_INIT)
+    EXSTYLE WS_EX_TOOLWINDOW
+    ///STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | DS_CENTER
+    STYLE ((WS_OVERLAPPEDWINDOW | WS_DLGFRAME | WS_CAPTION ) - ( WS_MAXIMIZEBOX | WS_SIZEBOX | WS_MINIMIZEBOX  )) | DS_CENTER
+    /// STYLE WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_DLGFRAME | DS_CENTER
+    CAPTION ""
+    FONT 10, "Times"
+    BEGIN
+    ///
+    ///
+    ///
+    ///
+    CONTROL "", IDYES, "BUTTON",  WS_CHILD | WS_VISIBLE,
+                        -100, -100, 30, 30
+    ///
+    CONTROL "", 20, "STATIC",  WS_CHILD | WS_VISIBLE,
+                        0, 0, WPGRSB_INIT, (HPGRSB_INIT - L_HTEXT_INIT)
+    ///
+    ///
+    CONTROL "", 123, "STATIC",  SS_REALSIZEIMAGE | SS_ICON | WS_CHILD |
+                        ///WS_BORDER |
+                        WS_VISIBLE
+                        ,
+                        WPGRSB_INIT- 21, 1, 50, 50
+    ///
+    ///
+END
+
+///
+
+
+
+
+
+
+

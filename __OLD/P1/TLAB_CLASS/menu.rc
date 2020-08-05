@@ -1,0 +1,137 @@
+TAD_WMenuMain MENUEX
+BEGIN
+POPUP "&Archivo"
+    BEGIN
+        MENUITEM "&Guardar datos de aplicación\a Ctrl + S", CMD_SAVE_DATAS
+        MENUITEM SEPARATOR
+        MENUITEM "&Guardar procesamiento (CÓDIGO MATLAB)\a Ctrl + G", CMD_SAVE_PROC
+        MENUITEM SEPARATOR
+        POPUP "&Archivos complementarios"
+        BEGIN
+            MENUITEM "&Guardar FIRMWARE PIC16F690\a", CMD_SAVE_FIRMWARE
+            MENUITEM SEPARATOR
+            MENUITEM "&Guardar esquema TAD 16F690\a", CMD_SAVE_SCH_TAD
+            MENUITEM SEPARATOR
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "&Salir\aCtrl + Q", CMD_SALIR
+    END
+
+POPUP "&Opciones"
+BEGIN
+    MENUITEM "&Siempre Visible\a Ctrl + T", CMD_ON_TOP
+    MENUITEM SEPARATOR
+    MENUITEM "&Abrir carpeta TLAB\a Ctrl + L", CMD_OPEN_TLAB
+    MENUITEM SEPARATOR
+    MENUITEM "&Instalar driver USB a SERIAL\a", CMD_INST_DRIVER
+    MENUITEM SEPARATOR
+END
+
+
+
+
+POPUP "&Ayuda"
+    BEGIN
+    MENUITEM "&Consultar puertos existentes\a Ctrl + B", CMD_PORTS
+    MENUITEM SEPARATOR
+    MENUITEM "&Ayuda\a Ctrl + H", CMD_HELP
+    MENUITEM SEPARATOR
+    MENUITEM "&Acerca de DSP TAD\a", CMD_ABOUT
+    END
+END
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////
+TAD_aceleradores ACCELERATORS
+BEGIN
+    "^Q"     ,   CMD_SALIR
+    "x"      ,   CMD_SALIR, ALT
+    "X"      ,   CMD_SALIR, ALT
+    ///
+    "^B"     ,   CMD_PORTS
+    "^F"     ,   CMD_PORTS
+    ///
+    "^T"     ,   CMD_ON_TOP
+    "^S"     ,   CMD_SAVE_DATAS
+    ///
+    "^G"     ,   CMD_SAVE_PROC
+    ///
+    "^L"     ,   CMD_OPEN_TLAB
+    ///
+END
+////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+
+DSP_WMenuMain MENUEX
+BEGIN
+POPUP "&Archivo"
+    BEGIN
+        MENUITEM "&Guardar datos de aplicación\a Ctrl + S", CMD_SAVE_DATAS
+        MENUITEM SEPARATOR
+        MENUITEM "&Guardar procesamiento (CÓDIGO MATLAB)\a Ctrl + G", CMD_SAVE_PROC
+        MENUITEM SEPARATOR
+        MENUITEM "&Salir\aCtrl + Q", CMD_SALIR
+    END
+
+POPUP "&Herramientas"
+BEGIN
+    MENUITEM "&Siempre Visible\a Ctrl + T", CMD_ON_TOP
+    MENUITEM SEPARATOR
+    MENUITEM "&Abrir carpeta TLAB\a Ctrl + L", CMD_OPEN_TLAB
+    MENUITEM SEPARATOR
+END
+
+
+
+
+POPUP "&Ayuda"
+    BEGIN
+    MENUITEM "&Ayuda\a Ctrl + H", CMD_HELP
+    MENUITEM SEPARATOR
+    MENUITEM "&Acerca de TLAB\a", CMD_ABOUT
+    END
+END
+
+
+
+
+
+
+
+
+
+
+////////////////////////////////////////////////////////////////////////////////
+TLAB_aceleradores ACCELERATORS
+BEGIN
+    "^Q"     ,   CMD_SALIR
+    "x"      ,   CMD_SALIR, ALT
+    "X"      ,   CMD_SALIR, ALT
+    ///
+    ///
+    "^T"     ,   CMD_ON_TOP
+    "^S"     ,   CMD_SAVE_DATAS
+    ///
+    "^G"     ,   CMD_SAVE_PROC
+    ///
+    "^L"     ,   CMD_OPEN_TLAB
+    ///
+END
+////////////////////////////////////////////////////////////////////////////////
+

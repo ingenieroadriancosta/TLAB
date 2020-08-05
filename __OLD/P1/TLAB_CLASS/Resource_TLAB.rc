@@ -1,0 +1,312 @@
+#include <windows.h>
+#include <commctrl.h>
+/// #include <richedit.h>
+#include "E:\AIIF\SegAll\CONOCIMIENTO\UNIVERSIDAD\TESIS\P_NUEVO\APLICACIONES\TLAB\DSP_LAB\DSP_TAB\DSP_TAB_ALL\resource_DSP_TAB.h"
+#include "E:\AIIF\SegAll\CONOCIMIENTO\UNIVERSIDAD\TESIS\P_NUEVO\APLICACIONES\MAT_IO\MAT_IO_LIB\Mat_Io_Lib.rc"
+
+#include <windows.h>
+//#include "libmatio.h"
+#include "menu.rc"
+///
+///
+/// 1 24 "TLAB.exe.Manifest"
+///
+///
+TLAB_ICON           ICON                    "PICS\\TLAB4.ico"
+// DLG_ICON            ICON                    "PICS\\DSP_TAB2.ico"
+
+PIC_CONN            DSPTABPICS              "PICS\\STOPREC.jpg"
+PIC_PORTS           DSPTABPICS              "PICS\\PORTS.jpg"
+PIC_SAVEDATAS       DSPTABPICS              "PICS\\SAVE_DATAS.jpg"
+PIC_NONE_PROC       DSPTABPICS              "PICS\\no_proc.jpg"
+PIC_PLOT_PROC       DSPTABPICS              "PICS\\plot.png"
+PIC_FILT_PROC       DSPTABPICS              "PICS\\filt_pic.jpg"
+PIC_WINDOW_PROC     DSPTABPICS              "PICS\\wind_pic.jpg"
+PIC_FFT_PROC        DSPTABPICS              "PICS\\fft_pic.jpg"
+PIC_SPECT_PROC      DSPTABPICS              "PICS\\spec_pic.jpg"
+PIC_WIGNER_PROC     DSPTABPICS              "PICS\\wigv_pic.jpg"
+PIC_CHOIW_PROC      DSPTABPICS              "PICS\\choiw.jpg"
+///
+PIC_DSP_TAD_ABOUT   DSPTABPICS              "PICS\\DSP_TAD_ABOUT.jpg"
+///
+
+PIC_CENTRAR_PROC    DSPTABPICS              "PICS\\centrar.png"
+
+/// DSPTABPICS          PIC_CONN                "PICS\\REC.jpg" STOPREC
+PIC_DES_CONN          DSPTABPICS            "PICS\\REC.jpg"
+TLAB_FIRST            DSPTABPICS            "PICS\\im_first.jpg"
+///
+MATF_TAD_WIGNER          DSPTABPICS         "MATLAB\\wigner.m"
+MATF_TAD_CHOI_WILLIAM    DSPTABPICS         "MATLAB\\choi_william.m"
+///
+fondo          BITMAP            "PICS\\fondo.bmp"
+//
+// Dialog resources
+//
+LANGUAGE 0, SUBLANG_NEUTRAL
+DLG_MAIN DIALOGEX 0, 0, 600, 346///698, 388
+EXSTYLE WS_EX_TOPMOST
+STYLE ( (WS_OVERLAPPEDWINDOW - (WS_MAXIMIZEBOX | WS_SIZEBOX)) | WS_CAPTION ) | DS_CENTER
+/// STYLE DS_3DLOOK | DS_CENTER | DS_MODALFRAME | DS_SHELLFONT | WS_CAPTION | WS_VISIBLE | WS_POPUP | WS_SYSMENU
+CAPTION " DSP TAD "
+FONT 8, "Ms Shell Dlg"
+BEGIN
+    ///
+    CONTROL "fondo", 123456, "static", WS_VISIBLE | SS_BITMAP | SS_REALSIZEIMAGE, 1, 1, 600 - 3, 28
+    ///
+    CONTROL " Tiempo máximo\n de adquisición\n (Segundos):", -123, "static", WS_VISIBLE | SS_LEFT, 66, 1, 54, 27
+    /// CONTROL "", 2048, "edit", WS_VISIBLE | WS_BORDER |  ES_CENTER | ES_NUMBER, 117, 1, 52, 28
+    ///
+    CONTROL "Pruebas", 12345, "static", WS_VISIBLE | WS_BORDER | SS_LEFT, 330, 1, 120, 28
+    ///
+END
+
+
+
+#define WDLGP 106
+#define HDLGP 130
+#define GCP_LIST_PROC  1234
+DLG_PORTS DIALOG
+    60, 0, WDLGP, HDLGP
+    STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | DS_CENTER
+    CAPTION "Selector de puertos"
+    FONT 14, "Times"
+    BEGIN
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+    CONTROL "", GCP_LIST_PROC, "listbox", (( LBS_STANDARD | WS_CHILD | WS_VISIBLE | WS_TABSTOP)-LBS_SORT), 1, 10, 104, 99
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+    CONTROL "Aceptar",  IDOK, "button", BS_PUSHBUTTON | BS_CENTER | WS_CHILD | WS_VISIBLE | WS_TABSTOP,     WDLGP-105, HDLGP-15, 50, 14
+    CONTROL "Cancelar", IDCANCEL, "button", BS_PUSHBUTTON | BS_CENTER | WS_CHILD | WS_VISIBLE | WS_TABSTOP, WDLGP-51,  HDLGP-15, 50, 14
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+END
+
+//
+// Manifest resources
+//
+/// LANGUAGE 0, SUBLANG_NEUTRAL
+/// 1                  RT_MANIFEST    ".\\manifest.xml"
+Dial_Progress_Procs DIALOG
+    60, 0, 210, 24
+    STYLE WS_POPUP | WS_VISIBLE | WS_CAPTION | DS_CENTER
+    CAPTION "Procesado de modulos."
+    FONT 10, "Times"
+    BEGIN
+    CONTROL "Procesando...", 1, "static", SS_LEFT | WS_CHILD | WS_VISIBLE, 0, 0, 210, 8
+    CONTROL "", 2, "msctls_progress32", WS_CHILD | WS_VISIBLE, 0, 10, 210, 12
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+    /// CONTROL "ScrollBar1", GCP_SCROLL_BAR, "SCROLLBAR", SBS_VERT | WS_CHILD | WS_VISIBLE, 1, 10, 20, 99
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+END
+
+// AQUI
+#define WDLGP_TAD 106
+#define HDLGP_TAD 112
+Dial_Change_Proc_1D_TAD DIALOG
+    60, 0, WDLGP_TAD, HDLGP_TAD
+    STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | DS_CENTER
+    CAPTION "Administrador de procedimientos"
+    FONT 14, "Times"
+    BEGIN
+    CONTROL "", 10, "static", SS_LEFT | WS_CHILD | WS_VISIBLE, 0, 0, WDLGP_TAD - 4, 8
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+    CONTROL "", 20, "listbox", (( LBS_STANDARD | WS_CHILD | WS_VISIBLE | WS_TABSTOP)-LBS_SORT), 1, 10, WDLGP_TAD-2, HDLGP_TAD-39
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+
+
+
+    CONTROL "Procesar señal de entrada", 30, "BUTTON", WS_BORDER|BS_AUTOCHECKBOX | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 1, HDLGP_TAD-33, WDLGP_TAD-2, 16
+    CONTROL "Aceptar",  IDOK, "button", BS_PUSHBUTTON | BS_CENTER | WS_CHILD | WS_VISIBLE | WS_TABSTOP,     WDLGP_TAD-105, HDLGP_TAD-15, 50, 14
+    CONTROL "Cancelar", IDCANCEL, "button", BS_PUSHBUTTON | BS_CENTER | WS_CHILD | WS_VISIBLE | WS_TABSTOP, WDLGP_TAD-51,  HDLGP_TAD-15, 50, 14
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+END
+
+
+#define WDLGP 106
+#define HDLGP 130
+Dial_Change_Proc_1D DIALOG
+    60, 0, WDLGP, HDLGP
+    STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | DS_CENTER
+    CAPTION "Administrador de procedimientos"
+    FONT 14, "Times"
+    BEGIN
+    CONTROL "", 10, "static", SS_LEFT | WS_CHILD | WS_VISIBLE, 0, 0, 84, 8
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+    CONTROL "", 20, "listbox", (( LBS_STANDARD | WS_CHILD | WS_VISIBLE | WS_TABSTOP)-LBS_SORT), 1, 10, 104, 99
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+    CONTROL "Aceptar",  IDOK, "button", BS_PUSHBUTTON | BS_CENTER | WS_CHILD | WS_VISIBLE | WS_TABSTOP,     WDLGP-105, HDLGP-15, 50, 14
+    CONTROL "Cancelar", IDCANCEL, "button", BS_PUSHBUTTON | BS_CENTER | WS_CHILD | WS_VISIBLE | WS_TABSTOP, WDLGP-51,  HDLGP-15, 50, 14
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+END
+
+
+
+
+
+Dial_Fdesign_GUI DIALOGEX 60, 0, WDLGP, (HDLGP+90)
+EXSTYLE WS_EX_TOOLWINDOW
+    ///STYLE DS_SYSMODAL | WS_VISIBLE | WS_CAPTION | DS_CENTER | WS_OVERLAPPEDWINDOW | WS_DLGFRAME
+    STYLE ((WS_OVERLAPPEDWINDOW ) - ( WS_MAXIMIZEBOX | WS_SIZEBOX | WS_MINIMIZEBOX  )) | DS_CENTER
+    CAPTION " Diseño de filtros "
+    FONT 12, "Times"
+    BEGIN
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+    CONTROL "", 1, "combobox", (WS_CHILD | WS_VISIBLE | WS_BORDER | CBS_DROPDOWNLIST | WS_TABSTOP | WS_VSCROLL), 1, 1, 54, 200
+    CONTROL "", 2, "combobox", (WS_CHILD | WS_VISIBLE | WS_BORDER | CBS_DROPDOWNLIST | WS_TABSTOP | WS_VSCROLL), 1,14, 54, 200
+    ///
+    CONTROL "Alpha:", 0, "static", (WS_CHILD | WS_VISIBLE|WS_BORDER|SS_CENTER), 1, 28, 24, 10
+    CONTROL "", 3, "edit", (WS_CHILD | WS_VISIBLE|WS_BORDER|WS_TABSTOP), 26, 28, 28, 10
+    ///
+    CONTROL "Orden:", 0, "static", (WS_CHILD | WS_VISIBLE|WS_BORDER|SS_CENTER), 1, 40, 24, 10
+    CONTROL "", 4, "edit", (WS_CHILD | WS_VISIBLE|WS_BORDER|WS_TABSTOP|ES_NUMBER), 26, 40, 18, 10
+    ///
+    CONTROL "Tipo:", 0, "static", (WS_CHILD | WS_VISIBLE|WS_BORDER|SS_CENTER), 1, 52, 17, 10
+    CONTROL "", 5, "combobox", (WS_CHILD | WS_VISIBLE | WS_BORDER | CBS_DROPDOWNLIST | WS_TABSTOP | WS_VSCROLL), 20,52, 35, 200
+    ///
+    CONTROL "Frecuencia de corte inferior:", -2, "static", (WS_CHILD | WS_VISIBLE|WS_BORDER|SS_LEFT), 1, 65, 54, 18
+    CONTROL "1", 6, "edit", (WS_CHILD | WS_VISIBLE|WS_BORDER|WS_TABSTOP|ES_WANTRETURN|ES_MULTILINE), 23, 71, 30, 10
+    ///
+    CONTROL "Frecuencia de corte superior:", -3, "static", (WS_CHILD | WS_VISIBLE|WS_BORDER|SS_LEFT), 1, 84, 54, 18
+    CONTROL "", 7, "edit", (WS_CHILD | WS_VISIBLE|WS_BORDER|WS_TABSTOP|ES_WANTRETURN|ES_MULTILINE), 23, 91, 30, 10
+    ///
+    #define PLS 18
+    CONTROL "Frecuencia de muestreo:", -4, "static", (WS_CHILD | WS_VISIBLE|WS_BORDER|SS_LEFT), 1, (84+PLS), 54, 18
+    CONTROL "", 8, "edit", (WS_CHILD | WS_VISIBLE|WS_BORDER|WS_TABSTOP|ES_NUMBER|ES_WANTRETURN|ES_MULTILINE), 26, (PLS + 91), 28, 10
+    ///
+    ///
+    ///
+    CONTROL "Realizar barrido", 9, "button", (WS_CHILD | WS_VISIBLE|WS_BORDER|WS_TABSTOP), 1, 120, 54, 14
+    CONTROL "Copiar ejemplo\nMATLAB", 10, "button", (WS_CHILD | WS_VISIBLE|WS_BORDER|WS_TABSTOP|BS_MULTILINE|BS_LEFT), 1, 134, 54, 18
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+END
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+Dial_Fdesign_WIN_GUI DIALOGEX 60, 0, WDLGP, (HDLGP+90)
+EXSTYLE WS_EX_TOOLWINDOW
+    ///STYLE DS_SYSMODAL | WS_VISIBLE | WS_CAPTION | DS_CENTER | WS_OVERLAPPEDWINDOW | WS_DLGFRAME
+    STYLE ((WS_OVERLAPPEDWINDOW ) - ( WS_MAXIMIZEBOX | WS_SIZEBOX | WS_MINIMIZEBOX  )) | DS_CENTER
+    CAPTION " Diseño de ventanas "
+    FONT 12, "Times"
+    BEGIN
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+    CONTROL "", 1, "combobox", (WS_CHILD | WS_VISIBLE | WS_BORDER | CBS_DROPDOWNLIST | WS_TABSTOP | WS_VSCROLL), 1, 1, 60, 200
+    CONTROL "Alpha:", 0, "static", (WS_CHILD | WS_VISIBLE|WS_BORDER|SS_CENTER), 70, 1, 24, 11
+    CONTROL "", 2, "edit", (WS_CHILD | WS_VISIBLE|WS_BORDER|WS_TABSTOP), 95, 1, 28, 11
+END
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+Dial_Fspectogram_WIN_GUI DIALOGEX 60, 0, WDLGP, (HDLGP+90)
+EXSTYLE WS_EX_TOOLWINDOW
+    ///STYLE DS_SYSMODAL | WS_VISIBLE | WS_CAPTION | DS_CENTER | WS_OVERLAPPEDWINDOW | WS_DLGFRAME
+    STYLE ((WS_OVERLAPPEDWINDOW ) - ( WS_MAXIMIZEBOX | WS_SIZEBOX | WS_MINIMIZEBOX  )) | DS_CENTER
+    CAPTION " Diseño de espectograma "
+    FONT 12, "Times"
+    BEGIN
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+    CONTROL "", 1, "combobox", (WS_CHILD | WS_VISIBLE | WS_BORDER | CBS_DROPDOWNLIST | WS_TABSTOP | WS_VSCROLL), 1, 1, 60, 200
+    CONTROL "Alpha:", 0, "static", (WS_CHILD | WS_VISIBLE|WS_BORDER|SS_CENTER), 62, 1, 20, 11
+    CONTROL "", 2, "edit", (WS_CHILD | WS_VISIBLE|WS_BORDER|WS_TABSTOP), 83, 1, 28, 11
+    ///
+    ///CONTROL "División de tiempo:", -1, "static", (WS_CHILD | WS_VISIBLE|WS_BORDER), 134, 1, 48, 11
+    ///CONTROL "", 3, "edit", (WS_CHILD | WS_VISIBLE|WS_BORDER|WS_TABSTOP), 184, 1, 16, 11
+END
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+
+
+
+Dial_SAVE_ADV DIALOGEX 60, 0, 204, 154
+EXSTYLE 0//WS_EX_TOOLWINDOW///|WS_EX_TOPMOST
+    STYLE DS_SYSMODAL | WS_VISIBLE | WS_CAPTION | DS_CENTER | WS_DLGFRAME
+    /// STYLE ((WS_OVERLAPPEDWINDOW ) - ( WS_MAXIMIZEBOX | WS_SIZEBOX | WS_MINIMIZEBOX  )) | DS_CENTER
+    CAPTION "  "
+    FONT 10, "Times"
+    BEGIN
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+    CONTROL "asdasd", -1, "static", WS_BORDER | WS_VISIBLE, 1, 1, 198, 138
+    ///
+    ///
+    CONTROL "Procesar  hasta  el  módulo  seleccionado  de  cada  canal.", 6, "button",
+                    WS_BORDER | WS_VISIBLE  | BS_MULTILINE | BS_LEFT | BS_AUTOCHECKBOX | WS_TABSTOP, 1, 60, 180, 11
+    ///
+    CONTROL "Canal 1", 3, "button", WS_BORDER | WS_VISIBLE  | BS_LEFT | BS_AUTOCHECKBOX | WS_TABSTOP, 3, 3, 194, 20
+    CONTROL "Canal 2", 4, "button", WS_BORDER | WS_VISIBLE  | BS_LEFT | BS_AUTOCHECKBOX | WS_TABSTOP, 3, 3, 194, 20
+    CONTROL "Canal 3", 5, "button", WS_BORDER | WS_VISIBLE  | BS_LEFT | BS_AUTOCHECKBOX | WS_TABSTOP, 3, 3, 194, 20
+
+    ///
+    CONTROL "Aceptar", 1, "button",
+                        ///WS_BORDER |
+                        WS_VISIBLE | WS_TABSTOP, 1, 1, 198, 138
+    ///
+    CONTROL "Cancelar", 2, "button",
+                        ///WS_BORDER |
+                        WS_VISIBLE | WS_TABSTOP, 1, 1, 198, 138
+    ///
+END
+
+
+
+
+Dial_About DIALOGEX 60, 0, 200, 140
+EXSTYLE 0//WS_EX_TOOLWINDOW///|WS_EX_TOPMOST
+    ///STYLE DS_SYSMODAL | WS_VISIBLE | WS_CAPTION | DS_CENTER | WS_OVERLAPPEDWINDOW | WS_DLGFRAME
+    STYLE ((WS_OVERLAPPEDWINDOW ) - ( WS_MAXIMIZEBOX | WS_SIZEBOX | WS_MINIMIZEBOX  )) | DS_CENTER
+    CAPTION " Acerca de DSP TAD "
+    FONT 12, "Times"
+    BEGIN
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+    CONTROL "", 2, "static",
+                WS_BORDER | WS_VISIBLE | SS_BITMAP | SS_REALSIZEIMAGE | SS_CENTERIMAGE,
+                                1, 1, 198, 138
+    ///
+END
+
+
+
+
+
+
+
+
+
+
+

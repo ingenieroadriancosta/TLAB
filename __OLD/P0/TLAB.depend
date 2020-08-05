@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1534764581 source:e:\aiif\segall\conocimiento\universidad\tesis\p_nuevo\aplicaciones\tlab\dsp_lab\tlab\main.cpp
+	<tchar.h>
+	<windows.h>
+
+1534929607 source:e:\aiif\segall\conocimiento\universidad\tesis\p_nuevo\aplicaciones\tlab\dsp_lab\tlab\__pruebas\main.cpp
+	<tchar.h>
+	<windows.h>
+	<stdio.h>
+

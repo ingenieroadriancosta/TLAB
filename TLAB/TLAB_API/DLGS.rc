@@ -1,0 +1,619 @@
+#define WDLG_1D     154
+#define HDLG_1D      88
+DLG_1D_INIT DIALOG
+    60, 0, WDLG_1D, HDLG_1D
+    STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | DS_CENTER
+    CAPTION "Cargar señal de una dimensión"
+    FONT 16, "Times"
+    BEGIN
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+    CONTROL "",  100, "button", BS_CENTER | BS_BITMAP | WS_CHILD | WS_VISIBLE | WS_TABSTOP,  1, 1, 34, 34
+    CONTROL "",  101, "button", BS_CENTER | BS_BITMAP | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 35, 1, 34, 34
+    CONTROL "",  102, "button", BS_CENTER | BS_BITMAP | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 69, 1, 34, 34
+    ///
+    CONTROL "Fs",  0, "static",  WS_CHILD | WS_VISIBLE | WS_BORDER, 1, 36, 10, 10
+    CONTROL "",  106, "edit", ES_MULTILINE | ES_CENTER | ES_NUMBER | WS_CHILD| WS_DISABLED | WS_VISIBLE | WS_TABSTOP | WS_BORDER, 11, 36, 28, 10
+    ///
+
+    CONTROL "f",  512, "static",  WS_CHILD | WS_VISIBLE | WS_BORDER, 48, 36, 10, 10
+    CONTROL "",  107, "edit", ES_MULTILINE | ES_CENTER | WS_CHILD| WS_DISABLED | WS_VISIBLE | WS_TABSTOP | WS_BORDER, 58, 36, 28, 10
+    ///
+    ///
+    CONTROL "Canal 1",  110, "button",
+                BS_RADIOBUTTON | BS_CENTER |
+                WS_BORDER |
+                WS_CHILD | WS_VISIBLE | WS_TABSTOP,
+                WDLG_1D-66, 36, 29, 10
+    ///
+    ///
+    CONTROL "Canal 2",  111, "button",
+                BS_RADIOBUTTON | BS_CENTER |
+                WS_BORDER |
+                WS_CHILD | WS_VISIBLE | WS_TABSTOP,
+                WDLG_1D-34, 36, 29, 10
+    ///
+    ///
+    CONTROL "",  99, "edit",  ES_WANTRETURN | ES_MULTILINE | ES_READONLY | WS_CHILD | WS_VISIBLE | WS_BORDER, 1, HDLG_1D - 41, WDLG_1D - 2, 40
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+    CONTROL "Aceptar",  10, "button", WS_DISABLED | BS_CENTER | WS_CHILD | WS_VISIBLE | WS_TABSTOP,     (WDLG_1D-51), 1, 50, 17
+    CONTROL "Cancelar", 11, "button", BS_CENTER | WS_CHILD | WS_VISIBLE | WS_TABSTOP, (WDLG_1D-51), 18, 50, 17
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+END
+/*
+double Chirp( double w1, double w2, double A, double M, double time ){
+    double res;
+    res=A*cos(w1*time+(w2-w1)*time*time/(2*M));
+    return res;
+}
+//*/
+#define WDLG_1D_VAR 154
+#define HDLG_1D_VAR  70
+DLG_LOAD_VAR_1D DIALOG
+    60, 0, HDLG_1D_VAR, WDLG_1D_VAR
+    STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | DS_CENTER
+    CAPTION ""
+    FONT 16, "Times"
+    BEGIN
+    CONTROL "Aceptar",  IDYES, "button", BS_CENTER | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 0, 1, HDLG_1D_VAR/2, 14
+    CONTROL "Cancelar", IDCANCEL, "button", BS_CENTER | WS_CHILD | WS_VISIBLE | WS_TABSTOP, HDLG_1D_VAR/2, 1, HDLG_1D_VAR/2, 14
+    ///
+    ///
+    ///          LBS_SORT
+    CONTROL "", 100, "listbox",  ( LBS_NOTIFY | (WS_CHILD | WS_VISIBLE | WS_TABSTOP) ), 1, 16, HDLG_1D_VAR-2, (WDLG_1D_VAR-17)
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+END
+///
+///
+///
+///
+///
+#define WPGRSB 200
+#define HPGRSB  25
+18 DIALOG
+    60, 0, WPGRSB, HPGRSB
+    EXSTYLE WS_EX_TOOLWINDOW
+    STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | DS_CENTER
+    CAPTION ""
+    FONT 12, "Times"
+    BEGIN
+    ///
+    CONTROL "", 100, PROGRESS_CLASS,  WS_CHILD | WS_BORDER | WS_VISIBLE, 0, 0, WPGRSB, HPGRSB
+    ///
+END
+///
+///
+///
+///
+///
+///
+///
+///
+///
+///
+
+// AQUI
+#define WDLGP_TAD 106
+#define HDLGP_TAD 118
+Dial_Change_Proc_1D_TAD DIALOG
+    60, 0, WDLGP_TAD, HDLGP_TAD
+    STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | DS_CENTER
+    CAPTION "Administrador de procedimientos"
+    FONT 14, "Times"
+    BEGIN
+    CONTROL "", 10, "static", SS_LEFT | WS_CHILD | WS_VISIBLE, 0, 0, WDLGP_TAD - 4, 8
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+    CONTROL "", 20, "listbox", (( LBS_STANDARD | WS_CHILD | WS_VISIBLE | WS_TABSTOP)-LBS_SORT), 1, 10, WDLGP_TAD-2, HDLGP_TAD-39
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+
+
+
+    CONTROL "Procesar señal de entrada", 30, "BUTTON", WS_BORDER|BS_AUTOCHECKBOX | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 1, HDLGP_TAD-33, WDLGP_TAD-2, 16
+    CONTROL "Aceptar",  IDOK, "button", BS_PUSHBUTTON | BS_CENTER | WS_CHILD | WS_VISIBLE | WS_TABSTOP,     WDLGP_TAD-105, HDLGP_TAD-15, 50, 14
+    CONTROL "Cancelar", IDCANCEL, "button", BS_PUSHBUTTON | BS_CENTER | WS_CHILD | WS_VISIBLE | WS_TABSTOP, WDLGP_TAD-51,  HDLGP_TAD-15, 50, 14
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+END
+///
+///
+///
+///
+///
+
+#define WDLGP 106
+#define HDLGP 130
+//STYLE WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_DLGFRAME
+Dial_Fdesign_GUI DIALOGEX 60, 0, WDLGP, (HDLGP+90)
+EXSTYLE WS_EX_TOOLWINDOW
+    ///STYLE DS_SYSMODAL | WS_VISIBLE | WS_CAPTION | DS_CENTER | WS_OVERLAPPEDWINDOW | WS_DLGFRAME
+    /// IS -----> WS_DLGFRAME NO DS_SYSMODAL
+    STYLE ((WS_OVERLAPPEDWINDOW | WS_DLGFRAME | WS_CAPTION ) - ( WS_MAXIMIZEBOX | WS_SIZEBOX | WS_MINIMIZEBOX  )) | DS_CENTER
+    /// STYLE ((WS_OVERLAPPEDWINDOW | WS_VISIBLE | DS_SYSMODAL | WS_CAPTION | WS_DLGFRAME ) - ( WS_MAXIMIZEBOX | WS_SIZEBOX | WS_MINIMIZEBOX  )) | DS_CENTER
+    ///
+    ///
+    CAPTION " Diseño de filtros "
+    FONT 12, "Times"
+    BEGIN
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+    CONTROL "", 1, "combobox", (WS_CHILD | WS_VISIBLE | WS_BORDER | CBS_DROPDOWNLIST | WS_TABSTOP | WS_VSCROLL), 1, 1, 54, 200
+    CONTROL "", 256, "combobox", (WS_CHILD | WS_VISIBLE | WS_BORDER | CBS_DROPDOWNLIST | WS_TABSTOP | WS_VSCROLL), 1,14, 54, 200
+    ///
+    CONTROL "Alpha:", 0, "static", (WS_CHILD | WS_VISIBLE|WS_BORDER|SS_CENTER), 1, 28, 24, 10
+    CONTROL "", 3, "edit", (WS_CHILD | WS_VISIBLE|WS_BORDER|WS_TABSTOP), 26, 28, 28, 10
+    ///
+    CONTROL "Orden:", 0, "static", (WS_CHILD | WS_VISIBLE|WS_BORDER|SS_CENTER), 1, 40, 24, 10
+    CONTROL "", 4, "edit", (WS_CHILD | WS_VISIBLE|WS_BORDER|WS_TABSTOP|ES_NUMBER), 26, 40, 18, 10
+    ///
+    CONTROL "Tipo:", 0, "static", (WS_CHILD | WS_VISIBLE|WS_BORDER|SS_CENTER), 1, 52, 17, 10
+    CONTROL "", 5, "combobox", (WS_CHILD | WS_VISIBLE | WS_BORDER | CBS_DROPDOWNLIST | WS_TABSTOP | WS_VSCROLL), 20,52, 35, 200
+    ///
+    CONTROL "Frecuencia de corte inferior:", -2, "static", (WS_CHILD | WS_VISIBLE|WS_BORDER|SS_LEFT), 1, 65, 54, 18
+    CONTROL "1", 6, "edit", (WS_CHILD | WS_VISIBLE|WS_BORDER|WS_TABSTOP|ES_WANTRETURN|ES_MULTILINE), 23, 71, 30, 10
+    ///
+    CONTROL "Frecuencia de corte superior:", -3, "static", (WS_CHILD | WS_VISIBLE|WS_BORDER|SS_LEFT), 1, 84, 54, 18
+    CONTROL "", 7, "edit", (WS_CHILD | WS_VISIBLE|WS_BORDER|WS_TABSTOP|ES_WANTRETURN|ES_MULTILINE), 23, 91, 30, 10
+    ///
+    #define PLS 18
+    CONTROL "Frecuencia de muestreo:", -4, "static", (WS_CHILD | WS_VISIBLE|WS_BORDER|SS_LEFT), 1, (84+PLS), 54, 18
+    CONTROL "", 8, "edit", (WS_CHILD | WS_VISIBLE|WS_BORDER|WS_TABSTOP|ES_NUMBER|ES_WANTRETURN|ES_MULTILINE), 26, (PLS + 91), 28, 10
+    ///
+    ///
+    ///
+    CONTROL "Realizar barrido", 9, "button", (WS_CHILD | WS_VISIBLE|WS_BORDER|WS_TABSTOP), 1, 120, 54, 14
+    CONTROL "Copiar ejemplo\nMATLAB", 10, "button", (WS_CHILD | WS_VISIBLE|WS_BORDER|WS_TABSTOP|BS_MULTILINE|BS_LEFT), 1, 134, 54, 18
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+END
+
+
+
+
+
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+Dial_Fdesign_WIN_GUI DIALOGEX 60, 0, WDLGP, (HDLGP+90)
+EXSTYLE WS_EX_TOOLWINDOW
+    ///STYLE DS_SYSMODAL | WS_VISIBLE | WS_CAPTION | DS_CENTER | WS_OVERLAPPEDWINDOW | WS_DLGFRAME
+    ///STYLE ((WS_OVERLAPPEDWINDOW | DS_SYSMODAL ) - ( WS_MAXIMIZEBOX | WS_SIZEBOX | WS_MINIMIZEBOX  )) | DS_CENTER
+    STYLE ((WS_OVERLAPPEDWINDOW | WS_DLGFRAME | WS_CAPTION ) - ( WS_MAXIMIZEBOX | WS_SIZEBOX | WS_MINIMIZEBOX  )) | DS_CENTER
+    CAPTION " Diseño de ventanas "
+    FONT 12, "Times"
+    BEGIN
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+    CONTROL "", 1, "combobox", (WS_CHILD | WS_VISIBLE | WS_BORDER | CBS_DROPDOWNLIST | WS_TABSTOP | WS_VSCROLL), 1, 1, 60, 200
+    CONTROL "Alpha:", 0, "static", (WS_CHILD | WS_VISIBLE|WS_BORDER|SS_CENTER), 70, 1, 24, 11
+    CONTROL "", 256, "edit", (WS_CHILD | WS_VISIBLE|WS_BORDER|WS_TABSTOP), 95, 1, 28, 11
+END
+
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+Dial_Fspectogram_WIN_GUI DIALOGEX 60, 0, WDLGP, (HDLGP+90)
+EXSTYLE WS_EX_TOOLWINDOW
+    ///STYLE DS_SYSMODAL | WS_VISIBLE | WS_CAPTION | DS_CENTER | WS_OVERLAPPEDWINDOW | WS_DLGFRAME
+    STYLE ((WS_OVERLAPPEDWINDOW | DS_SYSMODAL ) - ( WS_MAXIMIZEBOX | WS_SIZEBOX | WS_MINIMIZEBOX  )) | DS_CENTER
+    CAPTION " Diseño de espectograma "
+    FONT 12, "Times"
+    BEGIN
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+    CONTROL "", 1, "combobox", (WS_CHILD | WS_VISIBLE | WS_BORDER | CBS_DROPDOWNLIST | WS_TABSTOP | WS_VSCROLL), 1, 1, 60, 200
+    CONTROL "Alpha:", 0, "static", (WS_CHILD | WS_VISIBLE|WS_BORDER|SS_CENTER), 62, 1, 20, 11
+    CONTROL "", 256, "edit", (WS_CHILD | WS_VISIBLE|WS_BORDER|WS_TABSTOP), 83, 1, 28, 11
+    ///
+    ///CONTROL "División de tiempo:", -1, "static", (WS_CHILD | WS_VISIBLE|WS_BORDER), 134, 1, 48, 11
+    ///CONTROL "", 3, "edit", (WS_CHILD | WS_VISIBLE|WS_BORDER|WS_TABSTOP), 184, 1, 16, 11
+END
+
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+
+
+// AQUI
+#define WDLGP_2D 106
+#define HDLGP_2D 166
+Dial_Change_Proc_2D DIALOG
+    60, 0, WDLGP_2D, HDLGP_2D
+    STYLE DS_MODALFRAME | WS_POPUP | WS_VISIBLE | WS_CAPTION | DS_CENTER
+    CAPTION "Administrador de procedimientos"
+    FONT 14, "Times"
+    BEGIN
+    CONTROL "", 10, "static", SS_LEFT | WS_CHILD | WS_VISIBLE, 0, 0, WDLGP_2D - 4, 18
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+    CONTROL "", 20, "listbox", (( LBS_STANDARD | WS_CHILD | WS_VISIBLE | WS_TABSTOP)-LBS_SORT), 1, 19, WDLGP_2D-2, HDLGP_2D-45
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+
+
+
+    CONTROL "Procesar señal de entrada", 30, "BUTTON", WS_BORDER|BS_AUTOCHECKBOX | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 1, HDLGP_2D-33, WDLGP_2D-2, 16
+    CONTROL "Aceptar",  IDOK, "button", BS_PUSHBUTTON | BS_CENTER | WS_CHILD | WS_VISIBLE | WS_TABSTOP,     WDLGP_2D-105, HDLGP_2D-15, 50, 14
+    CONTROL "Cancelar", IDCANCEL, "button", BS_PUSHBUTTON | BS_CENTER | WS_CHILD | WS_VISIBLE | WS_TABSTOP, WDLGP_2D-51,  HDLGP_2D-15, 50, 14
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+END
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+#define W_LEVEL 320
+#define H_LEVEL  350
+Dial_Select_Levels DIALOGEX
+    60, 0, W_LEVEL, H_LEVEL
+    EXSTYLE WS_EX_TOOLWINDOW
+    STYLE WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_DLGFRAME
+    CAPTION "Nivel offset(Imagen de prueba)"
+    FONT 10, "Times"
+    BEGIN
+    /// CONTROL "", 10, "static", SS_LEFT | WS_CHILD | WS_VISIBLE, 0, 0, W_LEVEL - 28, 10
+    CONTROL "", 10, "static", SS_LEFT | WS_CHILD | WS_VISIBLE, 0, 0, W_LEVEL - 168, 12
+    ///
+    ///
+    ///
+    CONTROL "ScrollBar1", 100, "SCROLLBAR", SBS_HORZ | WS_CHILD | WS_VISIBLE| WS_TABSTOP, 1, 14, W_LEVEL-2, 16
+    ///
+    ///
+    ///
+    ///
+    ///
+    ///
+    CONTROL "", 512, "combobox", (WS_CHILD | WS_VISIBLE | WS_BORDER | CBS_DROPDOWNLIST | WS_TABSTOP | WS_VSCROLL), W_LEVEL - 156, 1, 66, 250
+    CONTROL "Invertir salida", 2000, "BUTTON", WS_TABSTOP | BS_AUTOCHECKBOX | WS_BORDER | WS_VISIBLE | WS_CHILD, W_LEVEL - 86, 1, 58, 14
+    ///
+    ///
+    ///
+    CONTROL "Cerrar", IDOK, "BUTTON", SS_LEFT | WS_CHILD | WS_VISIBLE | WS_TABSTOP, W_LEVEL-27, 0, 26, 14
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+    CONTROL "128", 101, "static", WS_BORDER | SS_BITMAP | SS_CENTERIMAGE | WS_CHILD | WS_VISIBLE, 0, 32, W_LEVEL, H_LEVEL-33
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+END
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+#define W_LEVEL_K 320
+#define H_LEVEL_K  350
+#define PIC_O_Y_POS 50
+#define X_P_K  170
+
+Dial_Kernel_Levels DIALOGEX
+    60, 0, W_LEVEL_K, H_LEVEL_K
+    EXSTYLE WS_EX_TOOLWINDOW
+    STYLE WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_DLGFRAME
+    CAPTION " Convolución (Imagen de prueba) "
+    FONT 10, "Times"
+    BEGIN
+    CONTROL "Cerrar", IDOK, "BUTTON", SS_LEFT | WS_CHILD | WS_VISIBLE | WS_TABSTOP, W_LEVEL_K-27, 0, 26, 14
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+    CONTROL "", 100, "combobox", (WS_CHILD | WS_VISIBLE | WS_BORDER | CBS_DROPDOWNLIST | WS_TABSTOP | WS_VSCROLL), 1, 1, 90, 250
+    ///
+    CONTROL "Orden:", 63, "STATIC", WS_BORDER | WS_CHILD | WS_VISIBLE, 93, 1, 24, 12
+    CONTROL "", 64, "EDIT", WS_TABSTOP | WS_BORDER | ES_CENTER | WS_CHILD | WS_VISIBLE | ES_NUMBER, 119, 1, 12, 12
+    ///
+    CONTROL "", 99, "combobox", (WS_CHILD | WS_VISIBLE | WS_BORDER | CBS_DROPDOWNLIST | WS_TABSTOP | WS_VSCROLL), 27, 18, 28, 200
+    CONTROL "OffSet", 0, "static", WS_BORDER | SS_LEFT | WS_CHILD | WS_VISIBLE, 0, 18, 24, 12
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+    ///
+    CONTROL "Kernel 3x3", 255, "static", SS_LEFT | WS_CHILD | WS_VISIBLE, X_P_K - 38, 15, 36, 10
+    ///
+    CONTROL "1", 256, "EDIT", WS_TABSTOP | WS_BORDER | ES_CENTER | WS_CHILD | WS_VISIBLE, X_P_K,     1, 18, 10
+    CONTROL "1", 257, "EDIT", WS_TABSTOP | WS_BORDER | ES_CENTER | WS_CHILD | WS_VISIBLE, X_P_K+23,  1, 18, 10
+    CONTROL "1", 258, "EDIT", WS_TABSTOP | WS_BORDER | ES_CENTER | WS_CHILD | WS_VISIBLE, X_P_K+46,  1, 18, 10
+    ///
+    CONTROL "1", 259, "EDIT", WS_TABSTOP | WS_BORDER | ES_CENTER | WS_CHILD | WS_VISIBLE, X_P_K,    15, 18, 10
+    CONTROL "0", 260, "EDIT", WS_TABSTOP | WS_BORDER | ES_CENTER | WS_CHILD | WS_VISIBLE, X_P_K+23, 15, 18, 10
+    CONTROL "1", 261, "EDIT", WS_TABSTOP | WS_BORDER | ES_CENTER | WS_CHILD | WS_VISIBLE, X_P_K+46, 15, 18, 10
+    ///
+    CONTROL "1", 262, "EDIT", WS_TABSTOP | WS_BORDER | ES_CENTER | WS_CHILD | WS_VISIBLE, X_P_K,    29, 18, 10
+    CONTROL "1", 263, "EDIT", WS_TABSTOP | WS_BORDER | ES_CENTER | WS_CHILD | WS_VISIBLE, X_P_K+23, 29, 18, 10
+    CONTROL "1", 264, "EDIT", WS_TABSTOP | WS_BORDER | ES_CENTER | WS_CHILD | WS_VISIBLE, X_P_K+46, 29, 18, 10
+    ///
+    ///
+    CONTROL "Quitar bordes", 2000, "BUTTON", WS_TABSTOP | BS_AUTOCHECKBOX | WS_BORDER | WS_VISIBLE | WS_CHILD, W_LEVEL_K - 60, 16, 58, 14
+    ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+    CONTROL "128", 101, "static", WS_BORDER | SS_BITMAP | SS_CENTERIMAGE | WS_CHILD | WS_VISIBLE, 0, PIC_O_Y_POS, W_LEVEL_K, H_LEVEL_K-(PIC_O_Y_POS+2)
+    /// CONTROL "128", 101, "static", SS_BITMAP | SS_CENTERIMAGE | WS_CHILD | WS_VISIBLE, 0, 32, W_LEVEL_K, H_LEVEL_K-33
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+END
+
+
+
+
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+#define W_Redim_K 270
+#define H_Redim_K  350
+#define PIC_RED_Y_POS 30
+Dial_Redim DIALOGEX
+    60, 0, W_Redim_K, H_Redim_K
+    EXSTYLE WS_EX_TOOLWINDOW
+    STYLE WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_DLGFRAME
+    CAPTION " Redimensionar (Imagen de prueba) "
+    FONT 10, "Times"
+    BEGIN
+    CONTROL "Cerrar", IDOK, "BUTTON", SS_LEFT | WS_CHILD | WS_VISIBLE | WS_TABSTOP, W_Redim_K-27, 0, 26, 14
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+    CONTROL "Dimensiones originales(WxH):    9999    x    9999",
+                    64, "STATIC", WS_BORDER | SS_LEFT | WS_CHILD | WS_VISIBLE, 1, 1, 150, 10
+    CONTROL "Dimensiones de salida(WxH) :",
+                    0, "STATIC", WS_BORDER | SS_LEFT | WS_CHILD | WS_VISIBLE, 1, 16, 95, 10
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+    CONTROL "", 256, "EDIT", WS_BORDER | ES_NUMBER | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 98, 16, 22, 10
+    CONTROL "x", 0, "STATIC", SS_LEFT | WS_CHILD | WS_VISIBLE, 122, 16, 5, 10
+    CONTROL "", 257, "EDIT", WS_BORDER | ES_NUMBER | WS_CHILD | WS_VISIBLE | WS_TABSTOP, 128, 16, 22, 10
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+    CONTROL "Mantener la relación de aspecto", 512, "BUTTON", BS_AUTOCHECKBOX | WS_CHILD | WS_VISIBLE | WS_TABSTOP,
+                            154, 16, 110, 14
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+    CONTROL "", 101, "static", WS_BORDER | SS_BITMAP | SS_CENTERIMAGE | WS_CHILD | WS_VISIBLE,
+                    0, PIC_RED_Y_POS, W_Redim_K, H_Redim_K-(PIC_RED_Y_POS+2)
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+END
+
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+#define W_Arith_K 276
+#define H_Arith_K  325
+#define PIC_O_Y_POSAR 50
+#define BUT_W 32
+#define BUT_H 12
+Dial_Arithmetic DIALOGEX
+    60, 0, W_Arith_K, H_Arith_K
+    EXSTYLE WS_EX_TOOLWINDOW
+    STYLE WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_DLGFRAME
+    CAPTION " Aritmética(Imagen de prueba) "
+    FONT 12, "Times"
+    BEGIN
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+    CONTROL "im+a",    200, "BUTTON", WS_BORDER | BS_NOTIFY | BS_CENTER | 0 | WS_CHILD | WS_VISIBLE | WS_TABSTOP,  1, 1, BUT_W, BUT_H
+    CONTROL "-255",    100, "EDIT",   WS_BORDER | ES_CENTER | WS_CHILD | WS_VISIBLE | WS_TABSTOP, (BUT_W+1), 1, 20, BUT_H
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+    CONTROL "im*a",    201, "BUTTON", WS_BORDER | BS_NOTIFY | BS_CENTER | 0 | WS_CHILD | WS_VISIBLE | WS_TABSTOP,        1+74,  1, BUT_W, BUT_H
+    CONTROL "255",     101, "EDIT",   WS_BORDER | ES_CENTER | WS_CHILD | WS_VISIBLE | WS_TABSTOP,      (BUT_W+1+74), 1, 30, BUT_H
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+    //CONTROL "im+a",   202, "BUTTON", WS_BORDER | BS_NOTIFY | BS_CENTER | 0 | WS_CHILD | WS_VISIBLE | WS_TABSTOP,        128,  1, BUT_W, BUT_H
+    //CONTROL "255",    102, "EDIT",   WS_BORDER | ES_NUMBER | ES_CENTER | WS_CHILD | WS_VISIBLE | WS_TABSTOP,      (BUT_W+1+127), 1, 18, BUT_H
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+    //CONTROL "im-a",   203, "BUTTON", WS_BORDER | BS_NOTIFY | BS_CENTER | 0 | WS_CHILD | WS_VISIBLE | WS_TABSTOP,        191,  1, BUT_W, BUT_H
+    //CONTROL "255",    103, "EDIT",   WS_BORDER | ES_NUMBER | ES_CENTER | WS_CHILD | WS_VISIBLE | WS_TABSTOP,      (BUT_W+1+190), 1, 18, BUT_H
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+    //*
+    CONTROL "a<im<b", 202, "BUTTON", WS_BORDER | BS_NOTIFY | BS_CENTER | 0 | WS_CHILD | WS_VISIBLE | WS_TABSTOP,        150,  1, BUT_W, BUT_H
+    CONTROL "0",      102, "EDIT",   WS_BORDER | ES_NUMBER | ES_CENTER | WS_CHILD | WS_VISIBLE | WS_TABSTOP,      (BUT_W+1+149), 1, 18, BUT_H
+    CONTROL "<im<",     0, "STATIC", ES_NUMBER | ES_CENTER | WS_CHILD | WS_VISIBLE,      (BUT_W+19+150), 2, 17, 10
+    CONTROL "255",     52, "EDIT",   WS_BORDER | ES_NUMBER | ES_CENTER | WS_CHILD | WS_VISIBLE | WS_TABSTOP,      (BUT_W+1+36+150), 1, 18, BUT_H
+    //*/
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+    CONTROL "Invertir salida",    512, "BUTTON", WS_BORDER | BS_AUTOCHECKBOX | BS_CENTER | 0 | WS_CHILD | WS_VISIBLE | WS_TABSTOP,  1, BUT_H+3, 2*BUT_W-12, BUT_H
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+    CONTROL "", 1001, "static", WS_BORDER | SS_BITMAP | SS_CENTERIMAGE | WS_CHILD | WS_VISIBLE, 0, PIC_O_Y_POSAR, W_Arith_K, H_Arith_K-(PIC_O_Y_POSAR+2)
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+    CONTROL "Cerrar", IDOK, "BUTTON", WS_CHILD | WS_VISIBLE | WS_TABSTOP, W_Arith_K-23, 0, 23, 14
+END
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+#define WPLAY_A 340
+#define HPLAY_A 150
+Dial_PlayDesign_GUI DIALOGEX
+    60, 0, WPLAY_A, HPLAY_A
+    EXSTYLE WS_EX_TOOLWINDOW
+    STYLE WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_DLGFRAME
+    CAPTION " Reproduccion de audio "
+    FONT 10, "Times"
+    BEGIN
+    CONTROL "Cerrar", IDOK, "BUTTON", WS_CHILD | WS_VISIBLE | WS_TABSTOP, WPLAY_A+71, 0, 26, 17
+    CONTROL "Reproducción automática", 12000, "BUTTON", BS_AUTOCHECKBOX | WS_BORDER | WS_CHILD | WS_VISIBLE | WS_TABSTOP, WPLAY_A+5, HPLAY_A+22, 90, 16
+    ///
+    CONTROL "Elija los módulos que desea mezclar y reproducir.", 12001, "STATIC", WS_CHILD | WS_VISIBLE, 1, 1, WPLAY_A+64, 15
+    ///
+END
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+Dial_SHOWPIC_GUI DIALOG
+    60, 60, 320, 240
+    STYLE WS_OVERLAPPEDWINDOW | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+    CAPTION " Visualizador de imagen "
+    FONT 10, "Times"
+    BEGIN
+    CONTROL "", 128, "static", SS_BITMAP | SS_CENTERIMAGE | WS_CHILD | WS_VISIBLE, 0, 0, 640, 480
+END
+
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+Dial_SHOWPLOT_GUI DIALOG
+    60, 60, 320, 240
+    STYLE WS_OVERLAPPEDWINDOW | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+    CAPTION "  "
+    FONT 10, "Times"
+BEGIN
+
+
+
+END
+
+
+
+
+
+
+
+
+
+
+
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+#define PIC_RED_Y_POS_ERO   40
+Dial_ERODE_IMAGE DIALOGEX
+    60, 0, W_Redim_K, H_Redim_K
+    EXSTYLE WS_EX_TOOLWINDOW
+    STYLE WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_DLGFRAME
+    CAPTION " Erosionar (Imagen de prueba) "
+    FONT 10, "Times"
+    BEGIN
+    CONTROL "Cerrar", IDOK, "BUTTON", SS_LEFT | WS_CHILD | WS_VISIBLE | WS_TABSTOP, W_Redim_K-27, 0, 26, 14
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+    CONTROL "", 512, "combobox", (WS_CHILD | WS_VISIBLE | WS_BORDER | CBS_DROPDOWNLIST | WS_TABSTOP | WS_VSCROLL), 1, 1, 50, 104
+    ///
+    CONTROL "Radio:", 1024, "static", (WS_CHILD | WS_VISIBLE | WS_BORDER), 1, 14, 29, 12
+    CONTROL "", 256, "EDIT", (WS_CHILD | WS_VISIBLE | WS_BORDER | WS_TABSTOP | ES_NUMBER), 34, 14, 12, 12
+    ///
+    ///
+    ///
+    CONTROL "Angulo:", 1025, "static", (WS_CHILD | WS_VISIBLE | WS_BORDER), 1, 28, 29, 12
+    CONTROL "", 257, "EDIT", (WS_CHILD | WS_VISIBLE | WS_BORDER | WS_TABSTOP | ES_NUMBER), 34, 28, 16, 12
+    ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+    CONTROL "", 101, "static", WS_BORDER | SS_BITMAP | SS_CENTERIMAGE | WS_CHILD | WS_VISIBLE,
+                    0, PIC_RED_Y_POS_ERO, W_Redim_K, H_Redim_K-(PIC_RED_Y_POS_ERO+2)
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+    CONTROL "", 102, "static", SS_BITMAP | SS_CENTERIMAGE | WS_CHILD | WS_VISIBLE,
+                    120, 0, 42, 42
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+END
+
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+Dial_ImFill DIALOGEX
+    60, 0, W_LEVEL, H_LEVEL
+    EXSTYLE WS_EX_TOOLWINDOW
+    STYLE WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_DLGFRAME
+    CAPTION "Imfill(Imagen de prueba)"
+    FONT 10, "Times"
+    BEGIN
+    /// CONTROL "", 10, "static", SS_LEFT | WS_CHILD | WS_VISIBLE, 0, 0, W_LEVEL - 28, 10
+    /// CONTROL "", 10, "static", SS_LEFT | WS_CHILD | WS_VISIBLE, 0, 0, W_LEVEL - 168, 12
+    ///
+    ///
+    ///
+    ///
+    ///
+    ///
+    CONTROL "", 512, "combobox", (WS_CHILD | WS_VISIBLE | WS_BORDER | CBS_DROPDOWNLIST | WS_TABSTOP | WS_VSCROLL), 1, 1, 66, 250
+    ///
+    ///
+    ///
+    CONTROL "Cerrar", IDOK, "BUTTON", SS_LEFT | WS_CHILD | WS_VISIBLE | WS_TABSTOP, W_LEVEL-27, 0, 26, 14
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+    CONTROL "128", 101, "static", WS_BORDER | SS_BITMAP | SS_CENTERIMAGE | WS_CHILD | WS_VISIBLE, 0, 32, W_LEVEL, H_LEVEL-33
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+END
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
+/// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// /// ///
